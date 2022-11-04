@@ -1,0 +1,22 @@
+name: Desafio pipeline de CI
+on:
+  pull_request:
+    branches:
+      - develop
+jobs:
+  Test-Run-Build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: npm Install
+        run: npm install
+      - name: npm test
+        run: npm test
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

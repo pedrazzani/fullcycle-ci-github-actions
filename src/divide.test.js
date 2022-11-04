@@ -7,3 +7,7 @@ test('Divide 1 / 2 to be 0.5', () => {
 test('Divide 1 / 0 to throw Error', () => {
   expect(() => divide(1, 0)).toThrow();
 });
+
+test('Divide 10 / \'2F\' to throw Error', () => {
+  expect(() => divide(10, '2F')).toThrow();
+});

@@ -8,7 +8,8 @@ const divide = (a, b) => {
     throw new Error('Divide by Zero!');
   }
 
-  return (a / b).toFixed(2);
+  const result = (a / b).toFixed(2);
+  return result;
 }
 
 module.exports = divide;
